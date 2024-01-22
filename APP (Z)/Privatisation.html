@@ -1,0 +1,147 @@
+<?php
+require_once('connexion.php');
+?>
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+</head>
+<body>
+ <header>
+        <div class="search-bar">
+            <input type="text" placeholder="Rechercher">
+            <button type="submit">Rechercher</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Acceuil.php">Acceuil</a></li>
+                <li><a href="Privatisation.html">Privatisation</a></li>
+                <li><a href="programmationAVT.html">Programmation</a></li>
+            </ul>
+        </nav>
+        <div class="login-register-button">
+            <a href="CrAccnt.php">Se connecter/Inscrire</a>
+        </div>
+    </header>
+    <div class="page">
+        <div class = "texte">
+            <h1>Privatisez un de nos sites de projection pour vos événements privés.</h1>
+            <p class="texte">
+                Bienvenue dans l'univers exclusif de nos projections cinématographiques en plein air, offrant une expérience sur mesure pour vos événements privés. 
+                </br>
+                </br>
+                La privatisation de notre lieu de projection crée une soirée cinématographique unique, alliant charme et élégance. 
+                </br>
+                Imaginez vos invités confortablement installés sous un ciel étoilé, plongés dans une atmosphère soigneusement orchestrée. 
+                </br>
+                Avec une sélection de films adaptée à tous les goûts et une équipe expérimentée prenant en charge chaque détail, nous vous invitons à créer des moments inoubliables. 
+                </br>
+                </br>   
+                Contactez-nous dès maintenant pour discuter de la personnalisation de votre événement et laissez-nous transformer votre vision en une réalité cinématographique impeccable.
+            </p>
+        </div>
+
+        <form action="" method="get" class="formulaire">
+
+            <div class="coordonnees">
+
+                <h2>Coordonnées</h2>
+                <div class="elt_coordonnees">
+                    <label for="nom">Nom </label>
+                    <input type="text" name="nom" id="nom" required/>
+                </div>
+                <div class="elt_coordonnees">
+                    <label for="prenom">Prénom </label>
+                    <input type="text" name="prenom" id="prenom" required />
+                </div>
+                </br>
+                <div class="elt_coordonnees">
+                    <label for="email">Courriel </label>
+                    <input type="email" name="email" id="email" required />
+                </div>
+                <div class="elt_coordonnees">
+                    <label for="telephone">Téléphone </label>
+                    <input type="tel" name="telephone" id="telephone" required />
+                </div>
+
+            </div>
+
+
+            <div class="privatisation">
+                
+                <h2>Privatisation</h2>
+                <div class="elt_privatisation">
+                    <label for="date_debut">Date de début </label>
+                    <input type="datetime-local" name="date_debut" id="date_debut" required />
+                </div>
+                </br>
+                <div class="elt_privatisation">
+                    <label for="date_fin">Date de fin </label>
+                    <input type="datetime-local" name="date_fin" id="date_fin"/>
+                </div>
+                <div class="elt_privatisation">
+                    <label for="nb_places">Nombres de places </label>
+                    <input type="number" name="nb_places" id="nb_places" min="10"/>
+                </div>
+                </br>
+                <div class="elt_privatisation">
+                    <label for="site">Site</label>
+                    <input list="nom_sites" name="site" id="site"/>
+                </div>
+                <datalist id="nom_sites">
+                    <option value="Cinéma en plein air de Vincennes (94300 VINCENNES)"></option>
+                    <option value="Cinéma en plein air à la Vilette (75019 PARIS)"></option>
+                    <option value="Cinéma au Clair de Lune (75001 PARIS)"></option>
+                    <option value="Ciné Quartier (06400 CANNES)"></option>
+                    <option value="Ciné Plein Air (13006 MARSEILLE)"></option>
+                    <option value="Ciné Plein Air de l'Institut Lumière (69009 LYON)"></option>
+                </datalist>
+
+            </div>
+            <div class="options">
+                
+                <h2>Options</h2>
+                <div class="elt_options">
+                    <label for="date_debut">Service de sécurité</label>
+                    <input type="checkbox" name="option_secu" id="option_secu"/>
+                </div>
+                <div class="elt_options">
+                    <label for="date_debut">Projection 3D</label>
+                    <input type="checkbox" name="option_projec" id="option_projec" />
+                </div>
+                <div class="elt_options">
+                    <label for="date_debut">Techniciens</label>
+                    <input type="checkbox" name="option_tech" id="option_tech" />
+                </div>
+
+            </div>
+            <div class="commentaire">
+                
+                <h2>Commentaire</h2>
+                <div class="commentaire">
+                    <label for="commentaire">Des remarques ?</label>
+                    <textarea class=elt_commentaire type="text" name="commentaire" id="commentaire" rows="32" required></textarea>
+                </div>
+
+            </div>
+            <div class="envoi">
+                
+                <div class="validation">
+                    <label class="validation">J'accepte que les données renseignées soient stockées et exploitées par la société EVENT IT</label>
+                    <input type="checkbox" name="CGV" id="CGV" required />
+                </div>
+                <div class="box_submit">
+                    <input type="submit" class="submit" value="Envoyer le formulaire" id="submit" required />
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</body>
+
+
+</html>

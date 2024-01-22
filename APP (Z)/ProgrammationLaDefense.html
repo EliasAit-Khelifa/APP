@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calendrier de programmation de films</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<header>
+        <div class="search-bar">
+            <input type="text" placeholder="Rechercher">
+            <button type="submit">Rechercher</button>
+        </div>
+        <nav>
+            <ul>
+				<li><a href="Acceuil.php">Acceuil</a></li>
+                <li><a href="Privatisation.html">Privatisation</a></li>
+                <li><a href="ProgrammationAVT.html">Programmation</a></li>
+        </nav>
+        <div class="login-register-button">
+            <a href="CrAccnt.html">Se connecter/Inscrire</a>
+        </div>
+    </header>
+<div class="container">
+  <div class="separator"></div>
+
+  <div class="calendar-wrapper">
+    <div class="sidebar">
+      <h3>Voici la programmation du mois de :</h3>
+      <div class="month-selection">
+        <label for="monthSelect">Choisir le mois :</label>
+        <select id="monthSelect">
+          <option value="0">Janvier</option>
+          <option value="1">Février</option>
+          <option value="2">Mars</option>
+          <option value="3">Avril</option>
+          <option value="4">Mai</option>
+          <option value="5">Juin</option>
+          <option value="6">Juillet</option>
+          <option value="7">Août</option>
+          <option value="8">Septembre</option>
+          <option value="9">Octobre</option>
+          <option value="10">Novembre</option>
+          <option value="11">Décembre</option>
+        </select>
+      </div>
+      <div class="year-selection">
+        <label for="yearSelect">Choisir l'année :</label>
+        <select id="yearSelect">
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+        </select>
+      </div>
+      <p>Cliquez sur la séance qui vous intéresse pour être redirigé vers la page des réservations !</p>
+    </div>
+
+    <div class="calendar">
+      <h1>Programmation</h1>
+      <p>Voici les événements de ce mois-ci dans nos différents cinémas !</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Dim</th>
+            <th>Lun</th>
+            <th>Mar</th>
+            <th>Mer</th>
+            <th>Jeu</th>
+            <th>Ven</th>
+            <th>Sam</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+  const filmSchedule = {
+    "2023-12-01": "Film A à 18h",
+    "2023-12-05": "Film B à 20h",
+    "2023-12-15": "Film C à 17h",
+  };
+
+  const monthSelect = document.getElementById('monthSelect');
+  const yearSelect = document.getElementById('yearSelect');
+  const tbody = document.querySelector('.calendar table tbody');
+
+  function generateCalendar(year, month) {
+    tbody.innerHTML = '';
+
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDay = new Date(year, month, 1).getDay();
+
+    let date = 1;
+    let lastDayOfMonth = false;
+
+    while (!lastDayOfMonth) {
+      const row = document.createElement('tr');
+      for (let i = 0; i < 7; i++) {
+        const cell = document.createElement('td');
+        if ((i < firstDay && date === 1) || date > daysInMonth) {
+          cell.textContent = '';
+        } else {
+          const dayNumber = document.createElement('span');
+          dayNumber.className = 'day-number';
+          dayNumber.textContent = date;
+          cell.appendChild(dayNumber);
+          const currentDate = `${year}-${(month + 1).toString().padStart(2, '0')}-${date.toString().padStart(2, '0')}`;
+          if (filmSchedule[currentDate]) {
+            const filmText = document.createElement('div');
+            filmText.className = 'film';
+            filmText.textContent = filmSchedule[currentDate];
+            filmText.addEventListener('click', () => redirectToBookingPage(currentDate));
+            cell.appendChild(filmText);
+          }
+          if (new Date().toDateString() === new Date(year, month, date).toDateString()) {
+            cell.classList.add('today');
+          }
+          date++;
+          if (date > daysInMonth) {
+            lastDayOfMonth = true;
+          }
+        }
+        row.appendChild(cell);
+      }
+      tbody.appendChild(row);
+    }
+  }
+
+  function changeMonth() {
+    const selectedMonth = monthSelect.value;
+    const selectedYear = yearSelect.value;
+    generateCalendar(selectedYear, selectedMonth);
+  }
+
+  function redirectToBookingPage(date) {
+    alert(`Redirection vers la page de réservations pour le ${date}`);
+  }
+
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
+  yearSelect.value = currentYear.toString();
+  monthSelect.value = currentMonth.toString();
+  generateCalendar(currentYear, currentMonth);
+
+  monthSelect.addEventListener('change', changeMonth);
+  yearSelect.addEventListener('change', changeMonth);
+</script>
+</body>
+</html>

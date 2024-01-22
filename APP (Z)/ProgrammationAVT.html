@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calendrier de programmation de films</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<header>
+    <div class="search-bar">
+            <input type="text" placeholder="Rechercher">
+            <button type="submit">Rechercher</button>
+        </div>
+        <nav>
+            <ul>
+        <li><a href="Acceuil.php">Acceuil</a></li>
+                <li><a href="Privatisation.html">Privatisation</a></li>
+                <li><a href="ProgrammationAVT.html">Programmation</a></li>
+            </ul>
+        </nav>
+        <div class="login-register-button">
+            <a href="CrAccnt.html">Se connecter/Inscrire</a>
+        </div>
+</header>
+<div class="container">
+  <div class="calendar-wrapper">
+    <div class="sidebar">
+      <form action="process.php" method="post">
+        <h3>Voici la programmation du mois de :</h3>
+        <div class="cinema-selection">
+          <label for="cinemaSelect">Choisir le cinéma :</label>
+          <select id="cinemaSelect" name="cinemaSelect">
+          <option value="Paris12">Paris 12</option>
+          <option value="Paris06">Paris 06</option>
+          <option value="LaDefense">La Defense</option>
+          <option value="Marseille">Marseille</option>
+          </select>
+        </div>
+        <button type="submit">Valider</button>
+        <p>Choisissez les options pour accéder à la programmation !</p>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
